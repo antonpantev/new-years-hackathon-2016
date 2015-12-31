@@ -1,1 +1,1 @@
-# nyh-2016
+# New Years Hackathon 2016
