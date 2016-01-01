@@ -1,0 +1,10 @@
+.unplaced-tiles {
+	display: flex;
+}
+
+.unplaced-tile {
+	display: inline-block;
+	padding: .40%;
+	vertical-align: middle;
+	width: calc((100% / 5) - 0.4%);
+}
