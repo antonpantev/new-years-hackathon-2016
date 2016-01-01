@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	createTiles(0x99, 0xee, 6);
+	createTiles(0x99, 0xee, 13);
 
 	$(window).resize(resizeUnplacedTile);
 	resizeUnplacedTile();
