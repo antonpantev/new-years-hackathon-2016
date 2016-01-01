@@ -1,5 +1,14 @@
+.fixed-footer {
+	position: fixed;
+	left: 0px;
+	bottom: 0px;
+	width: 100%;
+	background: #fff;
+}
+
 .unplaced-tiles {
 	display: flex;
+	padding: 1%;
 	flex-direction: row;
 	flex-wrap: wrap;
 }
