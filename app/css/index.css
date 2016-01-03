@@ -1,10 +1,28 @@
+html {
+	position: fixed;
+}
+
 html, body {
+	height: 100%;
+	width: 100%;
 	margin: 0px;
 	padding: 0px;
 }
 
-html, body, .placed-tiles {
-	height: 100%;
+.container {
+	display: flex;
+	height:  100%;
+	flex-direction: column;
+}
+
+.main {
+	flex-grow: 1;
+	flex-shrink: 1;
+	overflow: auto;
+}
+
+.footer {
+	flex-shrink: 0;
 }
 
 .logo {
@@ -15,21 +33,13 @@ html, body, .placed-tiles {
 
 .placed-tile-divider {
     border: 0;
-    height: 1.5px;
-    background-image: linear-gradient(to right, rgba(204, 204, 204, 0), rgba(204, 204, 204, 1), rgba(204, 204, 204, 0));
+    height: 1px;
+    background-color: #cccccc;
 }
 
 .placed-tile {
 	padding: 1%;
 	height: calc((100% / 7) - (2 * 1%));
-}
-
-.fixed-footer {
-	position: fixed;
-	left: 0px;
-	bottom: 0px;
-	width: 100%;
-	background: #fff;
 }
 
 .unplaced-tiles {
