@@ -26,11 +26,16 @@ function newGame(minColor, maxColor, numTiles) {
 	}
 
 	/* Add empty placed tiles */
-	$('#placed-tiles').append('<hr class="placed-tile-divider">');
+	//$('#placed-tiles').append('<hr class="placed-tile-divider">');
 
 	for(var i = 0; i < numTiles; i++) {
 		addEmptyPlacedTile(i+1);
 	}
+
+	$('#placed-tiles').sortable({
+		handle: '.drag-handle'
+	});
+	$('#placed-tiles').disableSelection();
 }
 
 function shuffle(array) {
@@ -52,7 +57,7 @@ function shuffle(array) {
 }
 
 function addUnplacedTile(color) {
-	var colorStr = "#" + color.toString(16) + color.toString(16) + color.toString(16);
+	var colorStr = '#' + color.toString(16) + color.toString(16) + color.toString(16);
 
 	var $unplacedTile = $('<div class="unplaced-tile"></div>');
 	$unplacedTile.css("background-color", colorStr);
@@ -61,8 +66,9 @@ function addUnplacedTile(color) {
 }
 
 function addEmptyPlacedTile(num) {
-	$('#placed-tiles').append('<div class="placed-tile"><div class="placed-tile-number">' + zeroPad(num, 2) + '</div></div>');
-	$('#placed-tiles').append('<hr class="placed-tile-divider">');
+	$('#placed-tiles').append('<div class="placed-tile"><div class="drag-handle"></div></div>');
+	//$('#placed-tiles').append('<div class="placed-tile"><span class="placed-tile-number">' + zeroPad(num, 2) + '</span></div>');
+	//$('#placed-tiles').append('<hr class="placed-tile-divider">');
 }
 
 function zeroPad(n, p) {

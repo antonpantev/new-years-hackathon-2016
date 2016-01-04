@@ -39,9 +39,12 @@ html, body {
 }
 
 .placed-tile {
-	box-sizing: border-box;
-	padding: 4%;
 	height: calc(100vh / 10);
+}
+
+.drag-handle {
+	height: 100%;
+	width: 80%;
 }
 
 .unplaced-tiles {
