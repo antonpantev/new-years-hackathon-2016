@@ -26,8 +26,6 @@ function newGame(minColor, maxColor, numTiles) {
 	}
 
 	/* Add empty placed tiles */
-	//$('#placed-tiles').append('<hr class="placed-tile-divider">');
-
 	for(var i = 0; i < numTiles; i++) {
 		addEmptyPlacedTile(i+1);
 	}
@@ -67,8 +65,6 @@ function addUnplacedTile(color) {
 
 function addEmptyPlacedTile(num) {
 	$('#placed-tiles').append('<div class="placed-tile"><div class="drag-handle"></div></div>');
-	//$('#placed-tiles').append('<div class="placed-tile"><span class="placed-tile-number">' + zeroPad(num, 2) + '</span></div>');
-	//$('#placed-tiles').append('<hr class="placed-tile-divider">');
 }
 
 function zeroPad(n, p) {
@@ -84,9 +80,6 @@ function resizeUnplacedTile() {
 	while(!willFitInHand(handWidth, numTiles, tilesPerRow)) {
 		tilesPerRow++;
 	}
-
-	// var debug = document.querySelector('#debugText');
-	// debug.innerHTML = window.innerWidth + " " + window.innerHeight + " " + tilesPerRow + " " + game.camera.width + " " + game.camera.height;
 
 	var tileSize = handWidth / tilesPerRow;
 
