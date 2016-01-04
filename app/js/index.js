@@ -1,8 +1,8 @@
 $(document).ready(function() {
 	newGame(0x99, 0xf7, 94);
 
-	$(window).resize(resizeUnplacedTile);
-	resizeUnplacedTile();
+	$(window).resize(resize);
+	resize();
 
 	$('#unplaced-tiles').on('click', '.unplaced-tile', unplacedTileClick);
 });
@@ -25,9 +25,11 @@ function newGame(minColor, maxColor, numTiles) {
 		addUnplacedTile(colors[i]);
 	}
 
-	/* Add empty placed tiles */
+	/* Add empty placed tiles and tile numbers */
 	for(var i = 0; i < numTiles; i++) {
-		addEmptyPlacedTile(i+1);
+		$('#placed-tiles').append('<div class="placed-tile"><div class="drag-handle"></div></div>');
+
+		$('#main').append('<div class="tile-number">'+zeroPad(i+1, 2)+'</div>');
 	}
 
 	$('#placed-tiles').sortable({
@@ -63,16 +65,12 @@ function addUnplacedTile(color) {
 	$('#unplaced-tiles').append($unplacedTile);
 }
 
-function addEmptyPlacedTile(num) {
-	$('#placed-tiles').append('<div class="placed-tile"><div class="drag-handle"></div></div>');
-}
-
 function zeroPad(n, p) {
 	var pad = new Array(1 + p).join('0');
 	return (pad + n).slice(-pad.length);
 }
 
-function resizeUnplacedTile() {
+function resize() {
 	var handWidth = $('.unplaced-tiles').width();
 	var numTiles = $('.unplaced-tile').length;
 	var tilesPerRow = 5;
@@ -86,6 +84,16 @@ function resizeUnplacedTile() {
 	var $tiles = $('.unplaced-tile');
 	$tiles.css('width', 'calc('+tileSize+'px - 1%)');
 	$tiles.css('height', $tiles.width());
+
+	setTimeout(function() {
+		var startY = $('#logo').position().top+$('#logo').outerHeight(true);
+		var placedTileHeight = $(window).height()/10;
+
+		$('.tile-number').each(function(i, element) {
+			var top = (startY + (i*placedTileHeight)) + "px";
+			$(element).css('top', top);
+		});
+	}, 0);
 }
 
 var percentOfHeight = 0.3;
