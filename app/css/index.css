@@ -33,13 +33,15 @@ html, body {
 
 .placed-tile-divider {
     border: 0;
+    margin: 0px;
     height: 2px;
     background-color: #f7f6f6;
 }
 
 .placed-tile {
-	padding: 1%;
-	height: calc((100% / 7) - (2 * 1%));
+	box-sizing: border-box;
+	padding: 4%;
+	height: calc(100vh / 10);
 }
 
 .unplaced-tiles {

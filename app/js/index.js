@@ -61,7 +61,7 @@ function addUnplacedTile(color) {
 }
 
 function addEmptyPlacedTile(num) {
-	$('#placed-tiles').append('<div class="placed-tile">' + zeroPad(num, 2) + '</div>');
+	$('#placed-tiles').append('<div class="placed-tile"><div class="placed-tile-number">' + zeroPad(num, 2) + '</div></div>');
 	$('#placed-tiles').append('<hr class="placed-tile-divider">');
 }
 
