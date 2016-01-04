@@ -55,5 +55,4 @@ html, body {
 	display: inline-block;
 	margin: 0.5%;
 	vertical-align: middle;
-	width: calc((100% / 10) - (2 * 0.5%));
 }

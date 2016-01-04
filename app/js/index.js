@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	newGame(0x99, 0xf7, 14);
+	newGame(0x99, 0xf7, 94);
 
 	$(window).resize(resizeUnplacedTile);
 	resizeUnplacedTile();
@@ -77,10 +77,32 @@ function zeroPad(n, p) {
 }
 
 function resizeUnplacedTile() {
-	var $tiles = $('.unplaced-tile');
+	var handWidth = $('.unplaced-tiles').width();
+	var numTiles = $('.unplaced-tile').length;
+	var tilesPerRow = 5;
 
-	var width = $tiles.width();
-	$tiles.css({'height': width + 'px'});
+	while(!willFitInHand(handWidth, numTiles, tilesPerRow)) {
+		tilesPerRow++;
+	}
+
+	// var debug = document.querySelector('#debugText');
+	// debug.innerHTML = window.innerWidth + " " + window.innerHeight + " " + tilesPerRow + " " + game.camera.width + " " + game.camera.height;
+
+	var tileSize = handWidth / tilesPerRow;
+
+	var $tiles = $('.unplaced-tile');
+	$tiles.css('width', 'calc('+tileSize+'px - 1%)');
+	$tiles.css('height', $tiles.width());
+}
+
+var percentOfHeight = 0.3;
+
+function willFitInHand(handWidth, numTiles, tilesPerRow) {
+	var tileSize = handWidth / tilesPerRow;
+	var handHeight = Math.ceil(numTiles / tilesPerRow) * tileSize;
+	var maxHandHeight = percentOfHeight * window.innerHeight;
+
+	return handHeight <= maxHandHeight;
 }
 
 var nextTilePos = 0;
