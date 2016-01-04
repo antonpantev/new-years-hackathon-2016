@@ -1,11 +1,13 @@
 $(document).ready(function() {
-	createTiles(0x99, 0xf7, 14);
+	newGame(0x99, 0xf7, 14);
 
 	$(window).resize(resizeUnplacedTile);
 	resizeUnplacedTile();
+
+	$('#unplaced-tiles').on('click', '.unplaced-tile', unplacedTileClick);
 });
 
-function createTiles(minColor, maxColor, numTiles) {
+function newGame(minColor, maxColor, numTiles) {
 	/* Add unplaced tiles */
 	var incr = Math.round((maxColor - minColor) / (numTiles - 1));
 
@@ -73,4 +75,15 @@ function resizeUnplacedTile() {
 
 	var width = $tiles.width();
 	$tiles.css({'height': width + 'px'});
+}
+
+var nextTilePos = 0;
+
+function unplacedTileClick() {
+	var color =  $(this).css('background-color');
+	$(this).remove();
+
+	var placedTile = $($('.placed-tile')[nextTilePos]);
+	placedTile.css('background-color', color);
+	nextTilePos++;
 }
